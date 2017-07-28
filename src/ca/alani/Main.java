@@ -1,29 +1,49 @@
 package ca.alani;
 
 import java.util.*;
+import java.security.*;
 
 public class Main {
 
-    private static int B;
-    private static int H;
-    private static boolean flag = true;
+    public static void main(String[] args) {
 
-    static {
-        Scanner sc = new Scanner(System.in);
-        B = sc.nextInt();
-        H = sc.nextInt();
-        if (B < 1 || H < 1) {
-            flag = false;
-            System.out.println("java.lang.Exception: Breadth and height must be positive");
+    DoNotTerminate.forbidExit();
+
+    try {
+        Scanner in = new Scanner(System.in);
+        int n = in .nextInt();
+        in.close();
+        String s = Integer.toString(n);
+
+
+        if (n == Integer.parseInt(s)) {
+            System.out.println("Good job");
+        } else {
+            System.out.println("Wrong answer.");
+        }
+    } catch (DoNotTerminate.ExitTrappedException e) {
+        System.out.println("Unsuccessful Termination!!");
         }
     }
+}
 
-    public static void main(String[] args){
-        if(flag) {
-            int area = B * H;
-            System.out.println(area);
-        }
-    }//end of main
+//The following class will prevent you from terminating the code using exit(0)!
+class DoNotTerminate {
 
-}//end of class
+    public static class ExitTrappedException extends SecurityException {
 
+        private static final long serialVersionUID = 1;
+    }
+
+    public static void forbidExit() {
+        final SecurityManager securityManager = new SecurityManager() {
+            @Override
+            public void checkPermission(Permission permission) {
+                if (permission.getName().contains("exitVM")) {
+                    throw new ExitTrappedException();
+                }
+            }
+        };
+        System.setSecurityManager(securityManager);
+    }
+}
