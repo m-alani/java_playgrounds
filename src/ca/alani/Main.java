@@ -5,14 +5,17 @@ import java.util.*;
 public class Main {
 
     public static String getSmallestAndLargest(String s, int k) {
-        int idx = k + 1;
         String smallest = s.substring(0,k);
         String largest = s.substring(0,k);
-
-        while (idx < s.length()) {
-            if (smallest.compareTo(s.substring(idx-k, idx)) < 0) {
-
+        int idx = k + 1;
+        while (idx <= s.length()) {
+            String temp = s.substring(idx-k, idx);
+            if (smallest.compareTo(temp) > 0) {
+                smallest = temp;
+            } else if (largest.compareTo(temp) < 0){
+                largest = temp;
             }
+            idx++;
         }
         return smallest + "\n" + largest;
     }
