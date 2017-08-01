@@ -21,11 +21,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String s = scan.next();
-        int k = scan.nextInt();
-        scan.close();
-
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int k = sc.nextInt();
+        sc.close();
         System.out.println(getSmallestAndLargest(s, k));
     }
 }
