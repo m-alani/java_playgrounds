@@ -1,6 +1,7 @@
 package ca.alani;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -9,7 +10,13 @@ public class Main {
         int testCases = Integer.parseInt(in.nextLine());
         while(testCases>0){
             String pattern = in.nextLine();
-            //Write your code
+            try {
+                Pattern.compile(pattern);
+                System.out.println("Valid");
+            } catch(Exception e) {
+                System.out.println("Invalid");
+            }
         }
     }
+    
 }
