@@ -7,16 +7,15 @@ public class Main {
 
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        int testCases = Integer.parseInt(in.nextLine());
-        while(testCases>0){
-            String pattern = in.nextLine();
-            try {
-                Pattern.compile(pattern);
-                System.out.println("Valid");
-            } catch(Exception e) {
-                System.out.println("Invalid");
-            }
+        String input = in.next();
+        int index = 0;
+        int length = input.length();
+        int range = length / 2;
+        while (index <= range && input.charAt(index) == input.charAt(length - index - 1)) {
+            index++;
         }
+        System.out.println((index > range) ? "Yes" : "No");
+        in.close();
     }
     
 }
