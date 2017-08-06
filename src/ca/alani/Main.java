@@ -5,16 +5,22 @@ import java.util.regex.Pattern;
 
 public class Main {
 
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        String input = in.next();
-        int index = 0;
-        int length = input.length();
-        int range = length / 2;
-        while (index <= range && input.charAt(index) == input.charAt(length - index - 1)) {
-            index++;
+    static int minSteps(String B){
+        int steps = 0;
+        int index = B.indexOf("010");
+        while (index != -1) {
+            steps++;
+            index = B.indexOf("010", index + 3);
         }
-        System.out.println((index > range) ? "Yes" : "No");
+        return steps;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        in.nextInt();
+        String B = in.next();
+        int result = minSteps(B);
+        System.out.println(result);
         in.close();
     }
     
