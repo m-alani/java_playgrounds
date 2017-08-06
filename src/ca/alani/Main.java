@@ -1,27 +1,36 @@
 package ca.alani;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class Main {
 
-    static int minSteps(String B){
-        int steps = 0;
-        int index = B.indexOf("010");
-        while (index != -1) {
-            steps++;
-            index = B.indexOf("010", index + 3);
-        }
-        return steps;
+    static int[][] a;
+
+    static int findSum(int r, int c) {
+        return (a[r][c] + a[r][c+1] + a[r][c+2] + a[r+1][c+1] + a[r+2][c] + a[r+2][c+1] + a[r+2][c+2]);
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        in.nextInt();
-        String B = in.next();
-        int result = minSteps(B);
-        System.out.println(result);
+        a = new int[6][6];
+
+        // Read input
+        for (int row=0; row<6; row++)
+            for (int col=0; col<6; col++)
+                a[row][col] = in.nextInt();
+
+        // Find the solution
+        int max = -10;
+        for (int row=0; row<4; row++)
+            for (int col=0; col<4; col++) {
+                int sum = findSum(row, col);
+                if (sum > max)
+                    max = sum;
+            }
+
+        // Print it out
+        System.out.println(max);
+
         in.close();
     }
-    
 }
