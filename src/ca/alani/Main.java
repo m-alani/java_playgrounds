@@ -20,7 +20,7 @@ public class Main {
                 a[row][col] = in.nextInt();
 
         // Find the solution
-        int max = -10;
+        int max = -64; // smallest allowed value for input is -9 times 7
         for (int row=0; row<4; row++)
             for (int col=0; col<4; col++) {
                 int sum = findSum(row, col);
@@ -33,4 +33,5 @@ public class Main {
 
         in.close();
     }
+
 }
