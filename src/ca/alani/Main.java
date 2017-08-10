@@ -6,6 +6,7 @@ public class Main {
 
     static int[][] a;
 
+    // Helper function to find the sum of an area
     static int findSum(int r, int c) {
         return (a[r][c] + a[r][c+1] + a[r][c+2] + a[r+1][c+1] + a[r+2][c] + a[r+2][c+1] + a[r+2][c+2]);
     }
