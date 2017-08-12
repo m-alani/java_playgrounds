@@ -4,35 +4,35 @@ import java.util.*;
 
 public class Main {
 
-    static int[][] a;
-
-    // Helper function to find the sum of an area
-    static int findSum(int r, int c) {
-        return (a[r][c] + a[r][c+1] + a[r][c+2] + a[r+1][c+1] + a[r+2][c] + a[r+2][c+1] + a[r+2][c+2]);
+    static String isBalanced(String s) {
+        boolean good = true;
+        Stack<Character> stack = new Stack<>();
+        for (Character c : s.toCharArray()) {
+            try {
+                switch (c) {
+                    case '}': good = (stack.pop() == '{'); break;
+                    case ')': good = (stack.pop() == '('); break;
+                    case ']': good = (stack.pop() == '['); break;
+                    default: stack.push(c);
+                }
+            } catch (EmptyStackException e) {
+                return "NO";
+            }
+            if (!good) {
+                return "NO";
+            }
+        }
+        return "YES";
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        a = new int[6][6];
-
-        // Read input
-        for (int row=0; row<6; row++)
-            for (int col=0; col<6; col++)
-                a[row][col] = in.nextInt();
-
-        // Find the solution
-        int max = -64; // smallest allowed value for input is -9 x 7
-        for (int row=0; row<4; row++)
-            for (int col=0; col<4; col++) {
-                int sum = findSum(row, col);
-                if (sum > max)
-                    max = sum;
-            }
-
-        // Print it out
-        System.out.println(max);
-
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            String s = in.next();
+            String result = isBalanced(s);
+            System.out.println(result);
+        }
         in.close();
     }
-
 }
