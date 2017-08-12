@@ -22,7 +22,7 @@ public class Main {
                 return "NO";
             }
         }
-        return "YES";
+        return stack.isEmpty() ? "YES" : "NO";
     }
 
     public static void main(String[] args) {
