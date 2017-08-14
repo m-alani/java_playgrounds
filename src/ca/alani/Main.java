@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Main {
 
+    // Helper function to check if a string is balanced
     static String isBalanced(String s) {
         boolean good = true;
         Stack<Character> stack = new Stack<>();
@@ -25,6 +26,7 @@ public class Main {
         return stack.isEmpty() ? "YES" : "NO";
     }
 
+    // Main
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
