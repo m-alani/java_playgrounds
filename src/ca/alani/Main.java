@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
 
-    // Helper function to check if a string is balanced
+    // Helper function to check if a string of brackets is balanced
     static String isBalanced(String s) {
         boolean good = true;
         Stack<Character> stack = new Stack<>();
