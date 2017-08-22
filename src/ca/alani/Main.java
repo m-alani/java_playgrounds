@@ -26,7 +26,7 @@ public class Main {
         return stack.isEmpty() ? "YES" : "NO";
     }
 
-    // Main
+    // Main function
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
