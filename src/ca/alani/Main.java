@@ -4,36 +4,31 @@ import java.util.*;
 
 public class Main {
 
-    // Helper function to check if a string of brackets is balanced
-    static String isBalanced(String s) {
-        boolean good = true;
-        Stack<Character> stack = new Stack<>();
-        for (Character c : s.toCharArray()) {
-            try {
-                switch (c) {
-                    case '}': good = (stack.pop() == '{'); break;
-                    case ')': good = (stack.pop() == '('); break;
-                    case ']': good = (stack.pop() == '['); break;
-                    default: stack.push(c);
-                }
-            } catch (EmptyStackException e) {
-                return "NO";
-            }
-            if (!good) {
-                return "NO";
-            }
-        }
-        return stack.isEmpty() ? "YES" : "NO";
-    }
-
     // Main
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int t = in.nextInt();
-        for(int a = 0; a < t; a++){
-            String s = in.next();
-            String result = isBalanced(s);
-            System.out.println(result);
+        int trips = in.nextInt();
+        for(int trip=0; trip<trips; trip++){
+            // Read the inputs for this case
+            int money = in.nextInt();
+            int flavorCount = in.nextInt();
+            int prices[] = new int[flavorCount];
+            for (int flavor=0; flavor<flavorCount; flavor++) {
+                prices[flavor] = in.nextInt();
+            }
+
+            // Find the output
+            for (int i=0; i<flavorCount-1; i++) {
+                for (int j=i+1; j<flavorCount; j++) {
+                    if (prices[i] + prices[j] == money) {
+                        System.out.print(i+1);
+                        System.out.print(" ");
+                        System.out.println(j+1);
+                        i = flavorCount;
+                        j = flavorCount;
+                    }
+                }
+            }
         }
         in.close();
     }
