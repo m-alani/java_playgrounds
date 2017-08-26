@@ -3,32 +3,43 @@ package ca.alani;
 import java.util.*;
 
 public class Main {
-    
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int trips = in.nextInt();
-        for(int trip=0; trip<trips; trip++){
-            // Read the inputs for this case
-            int money = in.nextInt();
-            int flavorCount = in.nextInt();
-            int prices[] = new int[flavorCount];
-            for (int flavor=0; flavor<flavorCount; flavor++) {
-                prices[flavor] = in.nextInt();
-            }
 
-            // Find the output
-            for (int i=0; i<flavorCount-1; i++) {
-                for (int j=i+1; j<flavorCount; j++) {
-                    if (prices[i] + prices[j] == money) {
-                        System.out.print(i+1);
-                        System.out.print(" ");
-                        System.out.println(j+1);
-                        i = flavorCount;
-                        j = flavorCount;
-                    }
-                }
+    // Insertion function
+    public static void insertIntoSorted(int[] ar) {
+        int inserted = ar[ar.length - 1];
+        boolean sorted = false;
+        int index = ar.length - 1;
+        while (!sorted && index > 0) {
+            if (ar[index - 1] > inserted) {
+                ar[index] = ar[index - 1];
+                printArray(ar);
+                index--;
+            } else {
+                ar[index] = inserted;
+                sorted = true;
             }
         }
-        in.close();
+        if (!sorted) {
+            ar[index] = inserted;
+        }
+        printArray(ar);
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int s = in.nextInt();
+        int[] ar = new int[s];
+        for(int i=0;i<s;i++){
+            ar[i]=in.nextInt();
+        }
+        insertIntoSorted(ar);
+    }
+
+
+    private static void printArray(int[] ar) {
+        for(int n: ar){
+            System.out.print(n+" ");
+        }
+        System.out.println("");
     }
 }
