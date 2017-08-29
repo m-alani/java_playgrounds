@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
 
-    // Insertion function
+    // Insertion function - Insertion Sort I
     public static void insertIntoSorted(int[] ar) {
         int inserted = ar[ar.length - 1];
         boolean sorted = false;
