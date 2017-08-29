@@ -3,11 +3,12 @@ package ca.alani;
 import java.util.*;
 
 public class Main {
-    
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int trips = in.nextInt();
         for(int trip=0; trip<trips; trip++){
+
             // Read the inputs for this case
             int money = in.nextInt();
             int flavorCount = in.nextInt();
